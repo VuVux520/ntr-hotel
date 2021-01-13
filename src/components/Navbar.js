@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FaAlignRight } from "react-icons/fa";
-import logo from "../images/logo.svg";
+import logo from '../logo_1.jpeg';
 export default class Navbar extends Component {
   state = {
     isOpen: false
@@ -15,7 +15,7 @@ export default class Navbar extends Component {
         <div className="nav-center">
           <div className="nav-header">
             <Link to="/">
-              <img src={logo} alt="Beach Resort" />
+              <img src={logo} alt="NTR Hotel" />
             </Link>
             <button
               type="button"
@@ -34,6 +34,9 @@ export default class Navbar extends Component {
             <li>
               <Link to="/rooms">Rooms</Link>
             </li>
+            <li><Link to="/booking-page">Booking</Link></li>
+            <li><Link to="/servicepage">Contact us</Link></li>
+            <li><Link to="/loginpage">Login/SignUp</Link></li>
           </ul>
         </div>
       </nav>

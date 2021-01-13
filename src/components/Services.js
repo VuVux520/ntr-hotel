@@ -1,34 +1,49 @@
-import React, { Component } from "react";
-import { FaCocktail, FaHiking, FaShuttleVan, FaBeer } from "react-icons/fa";
-import Title from "./Title";
+import React, { Component } from 'react';
+import FreeBreakfastIcon from '@material-ui/icons/FreeBreakfast';
+import LocalAirportIcon from '@material-ui/icons/LocalAirport';
+import WifiIcon from '@material-ui/icons/Wifi';
+import LocalLaundryServiceIcon from '@material-ui/icons/LocalLaundryService';
+import Title from './Title';
+import LocalBarIcon from '@material-ui/icons/LocalBar';
+import HotTubIcon from '@material-ui/icons/HotTub';
+import PoolIcon from '@material-ui/icons/Pool';
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 export default class Services extends Component {
   state = {
     services: [
       {
-        icon: <FaCocktail />,
-        title: "Free Cocktails",
-        info:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?"
+          icon: <FreeBreakfastIcon />,
+          title: "Free Breakfast"
       },
       {
-        icon: <FaHiking />,
-        title: "Endless Hiking",
-        info:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?"
+          icon: <WifiIcon />,
+          title: "Free Wi-Fi In All Rooms!",
       },
       {
-        icon: <FaShuttleVan />,
-        title: "Free Shuttle",
-        info:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?"
+          icon: <LocalAirportIcon/>,
+          title: "Airport Transfer",
       },
       {
-        icon: <FaBeer />,
-        title: "Strongest Beer",
-        info:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias molestias eius libero?"
-      }
-    ]
+          icon: <LocalLaundryServiceIcon />,
+          title: "Daily Housekeeping",
+      },
+      {
+          icon: <LocalBarIcon />,
+          title: "Bar",
+      },
+      {
+          icon: <HotTubIcon />,
+          title: "Hot Tub",
+      },
+      {
+          icon: <PoolIcon />,
+          title: "Swimming Pool [Outdoor]",
+      },
+      {
+          icon: <FitnessCenterIcon />,
+          title: "Fitness Center",
+      },
+  ]
   };
   render() {
     return (
@@ -40,7 +55,6 @@ export default class Services extends Component {
               <article key={`item-${item.title}`} className="service">
                 <span>{item.icon}</span>
                 <h6>{item.title}</h6>
-                <p>{item.info}</p>
               </article>
             );
           })}

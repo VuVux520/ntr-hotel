@@ -1,18 +1,26 @@
 import React, { Component } from "react";
 import defaultBcg from "../images/room-1.jpeg";
-import Hero from "../components/Hero";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import { RoomContext } from "../context";
-
 import StyledHero from "../components/StyledHero";
+import {
+    Form,
+    Input,
+    DatePicker
+  } from 'antd';
+import {Modal} from "antd" 
+  const { RangePicker } = DatePicker;
+
+
 export default class SingleRoom extends Component {
   constructor(props) {
     super(props);
     console.log(this.props);
     this.state = {
       slug: this.props.match.params.slug,
-      defaultBcg: defaultBcg
+      defaultBcg: defaultBcg,
+      isVisible: false
     };
   }
   static contextType = RoomContext;
@@ -49,7 +57,7 @@ export default class SingleRoom extends Component {
     console.log(defaultImages);
 
     return (
-      <>
+      <React.Fragment>
         <StyledHero img={images[0] || this.state.defaultBcg}>
           <Banner title={`${name} room`}>
             <Link to="/rooms" className="btn-primary">
@@ -63,6 +71,14 @@ export default class SingleRoom extends Component {
               <img key={index} src={item} alt={name} />
             ))}
           </div>
+          <div style={
+            {display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px"}
+          }>
+          <button className="button-booking" onClick={()=>this.setState({
+          isVisible: true
+        })}>Book this one</button>
+          </div>
+          
           <div className="single-room-info">
             <article className="desc">
               <h3>details</h3>
@@ -89,7 +105,34 @@ export default class SingleRoom extends Component {
             ))}
           </ul>
         </section>
-      </>
+        
+        <Modal
+                    title="MAKE A RESERVATION"
+                    centered
+                    visible={this.state.isVisible}
+                    onCancel={()=>this.setState({isVisible: false})}
+                    onOk={()=>this.setState({...this.state, isVisible: false})}
+                    okText="Book this room"
+                    > 
+    <Form
+    labelCol={{ span: 4}}
+    wrapperCol={{ span: 18 }}
+    layout="horizontal">
+    <Form.Item label="Name: ">
+          <Input id="name" />
+        </Form.Item>
+        <Form.Item label="Phone: ">
+          <Input id="phone" />
+        </Form.Item>
+        <Form.Item label="Email: ">
+          <Input id="email" />
+        </Form.Item>
+        <Form.Item label="Date: ">
+        <RangePicker/>
+        </Form.Item>
+        </Form>
+          </Modal>
+    </React.Fragment>
     );
   }
 }
